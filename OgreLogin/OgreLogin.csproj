@@ -32,11 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CookieClient.cs" />
+    <Compile Include="LoginClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tokens.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
