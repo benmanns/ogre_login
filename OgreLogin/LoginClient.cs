@@ -42,5 +42,24 @@ namespace OgreIsland.Login
             Characters = new Dictionary<string, string>(characterMatches.Count);
             foreach (Match character in characterMatches) Characters.Add(character.Groups[2].Value, character.Groups[3].Value);
         }
+
+        public void UpdateCharacter(string id)
+        {
+            Tokens tokens = new Tokens(DownloadString(_gameUri));
+            NameValueCollection update = new NameValueCollection
+                                             {
+                                                 {
+                                                     "__EVENTTARGET",
+                                                     string.Format("page$content$charlist$ctl{0}$charname", id)
+                                                     },
+                                                 {"__EVENTARGUMENT", String.Empty},
+                                                 {"__VIEWSTATE", tokens.ViewState},
+                                                 {"__EVENTVALIDATION", tokens.EventValidation},
+                                                 {"page$itemkey", String.Empty},
+                                                 {"page$itemname", String.Empty},
+                                                 {"page$content$tradecharlist", String.Empty}
+                                             };
+            UploadValues(_gameUri, "POST", update);
+        }
     }
 }
